@@ -16,144 +16,76 @@ export const weekday = [
   'viernes',
   'sabado'
 ]
-
+export const horario = [
+  '8-9',
+  '9-10',
+  '10-11',
+  '11-12',
+  '12-13',
+  '13-14',
+  '14-15',
+  '15-16',
+  '16-17',
+  '17-18',
+  '18-19',
+  '19-20'
+]
 export const agenda = {
-  horario: [
-    '8-9',
-    '9-10',
-    '10-11',
-    '11-12',
-    '12-13',
-    '13-14',
-    '14-15',
-    '15-16',
-    '16-17',
-    '17-18',
-    '18-19',
-    '19-20'
-  ],
   agenda_semanal: [
     {
-      day: 'lunes',
+      day: 'domingo',
+      dayNum: 0,
       active: false,
       horario: {
-        hora_8: false,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true
+
+      }
+    },
+    {
+      day: 'lunes',
+      dayNum: 1,
+      active: false,
+      horario: {
+
       }
     },
     {
       day: 'martes',
-      active: true,
+      dayNum: 2,
+      active: false,
       horario: {
-        hora_8: true,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true,
-        hora_20: true,
-        hora_21: true,
-        hora_22: true,
-        hora_23: true,
-        hora_24: true
+
       }
     },
     {
       day: 'miercoles',
+      dayNum: 3,
       active: false,
       horario: {
-        hora_8: true,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true
+
       }
     },
     {
       day: 'jueves',
+      dayNum: 4,
       active: false,
       horario: {
-        hora_8: true,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true
+
       }
     },
     {
       day: 'viernes',
-      active: true,
+      dayNum: 5,
+      active: false,
       horario: {
-        hora_8: true,
-        hora_9: true,
-        hora_18: true,
-        hora_19: true
+
       }
     },
     {
       day: 'sabado',
+      dayNum: 6,
       active: false,
       horario: {
-        hora_8: true,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true
-      }
-    },
-    {
-      day: 'domingo',
-      active: false,
-      horario: {
-        hora_8: false,
-        hora_9: true,
-        hora_10: true,
-        hora_11: true,
-        hora_12: true,
-        hora_13: false,
-        hora_14: true,
-        hora_15: true,
-        hora_16: true,
-        hora_17: true,
-        hora_18: true,
-        hora_19: true
+
       }
     }
   ]
