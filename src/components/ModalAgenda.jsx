@@ -37,7 +37,7 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
       const hour = newDate.getHours().toString().padStart(2, '0')
       const minutes = newDate.getMinutes().toString().padStart(2, '0')
       // return `${hour}:${newDate.getMinutes()}`
-      if (newDate > start && newDate < end) { arr.push({ time: `${hour}:${minutes}`, date: newDate, tiempo }) }
+      if (newDate > start && newDate < end) { arr.push({ time: `${hour}:${minutes}`, date: newDate, tiempo, active: 2 }) }
     })
     const newArr = setContent[0].map((x, i) => {
       if (x.dayNum === indexDay) {

@@ -17,18 +17,18 @@ export const weekday = [
   'sabado'
 ]
 export const horario = [
-  '8-9',
-  '9-10',
-  '10-11',
-  '11-12',
-  '12-13',
-  '13-14',
-  '14-15',
-  '15-16',
-  '16-17',
-  '17-18',
-  '18-19',
-  '19-20'
+  '8 am',
+  '9 am',
+  '10 am',
+  '11 am',
+  '12 pm',
+  '13 pm',
+  '14 pm',
+  '15 pm',
+  '16 pm',
+  '17 pm',
+  '18 pm',
+  '19 pm'
 ]
 export const agenda = {
   agenda_semanal: [
