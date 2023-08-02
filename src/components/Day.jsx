@@ -19,6 +19,7 @@ export const Day = ({ dia, agenda, indexDay, setContent }) => {
   }
 
   const handleRightClick = (ind) => {
+    event.preventDefault()
     console.log('asd')
     const newArr = setContent[0][dia.getDay()].horario.map((x, i) => {
       if (i === ind) {
