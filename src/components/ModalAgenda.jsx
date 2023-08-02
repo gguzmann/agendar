@@ -26,7 +26,7 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
     const tiempo = e.target[0].value
     const start = getDate(dateStart)
     console.log('start:', start)
-    const end = getDate(dateEnd) ?? new Date(new Date().setHours(21, 0, 0, 0))
+    const end = getDate(dateEnd)
     console.log(end)
     const arr = []
     console.log(e.target[0].value)
@@ -41,7 +41,7 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
     })
     const newArr = setContent[0].map((x, i) => {
       if (x.dayNum === indexDay) {
-        return { ...x, active: true, horario: arr, start, end, tiempo: e.target[0].value }
+        return { ...x, active: true, horario: arr, start, end, tiempo }
       }
       return x
     })
