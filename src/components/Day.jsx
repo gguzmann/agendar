@@ -19,7 +19,7 @@ export const Day = ({ dia, agenda, indexDay, setContent }) => {
   }
 
   return (
-    <div className=' bg-gray-200 border-1 border-black flex flex-col m-1'>
+    <div className=' bg-gray-200 border-1 border-black flex flex-col overflow-scroll m-1'>
       {agenda.length > 0 &&
                 agenda.find(x => x.day.includes(weekday[dia.getDay()])).active
         ? Object.values(agenda.find(x => x.day.includes(weekday[dia.getDay()])).horario).map((x, a) => (
