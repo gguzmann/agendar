@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
 import { agenda, fixedSemana, horario, weekday } from '../utils/agenda'
 import { Day } from './Day'
+import { getAgenda } from '../firebase'
 
 export const ColumnDays = () => {
-  const [content, setContent] = useState(agenda.agenda_semanal)
+  const [content, setContent] = useState([])
+  // const [content, setContent] = useState([])
   useEffect(() => {
+    getAgenda().then(x => {
+      console.log('asdasd', x)
+      setContent(x)
+    })
+    console.log('agenda:', [agenda.agenda_semanal])
   }, [])
   return (
     <>
@@ -22,13 +29,16 @@ export const ColumnDays = () => {
           }
         </div>
       </div>
-      {fixedSemana().map((dia, i) => (
+      {
+      content.length > 0 &&
+      fixedSemana().map((dia, i) => (
         <div key={i} className='w-full text-center'>
           <div className='p-2 bg-black text-white capitalize'>{weekday[dia.getDay()]}</div>
           <div className='text-white'>{new Intl.DateTimeFormat('es').format(dia)}</div>
           <Day dia={dia} indexDay={i} agenda={content} setContent={[content, setContent]} />
         </div>
-      ))}
+      ))
+}
     </>
   )
 }

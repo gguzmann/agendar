@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { saveAgenda } from '../firebase'
 
 export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
   const [step, setStep] = useState(300)
@@ -14,7 +15,6 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
     // const dateEnd = e.target[2].value
     const dateStart = '08:00'
     const dateEnd = '20:00'
-    console.log(dateStart, dateEnd)
 
     const getDate = (value) => {
       const horaMinutos = value.split(':')
@@ -25,11 +25,8 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
     }
     const tiempo = e.target[0].value
     const start = getDate(dateStart)
-    console.log('start:', start)
     const end = getDate(dateEnd)
-    console.log(end)
     const arr = []
-    console.log(e.target[0].value)
     const blocks = 1440 / e.target[0].value
     new Array(blocks).fill('').forEach((x, i) => {
       const hoy = new Date(new Date().setHours(0, 0, 0, 0))
@@ -46,9 +43,8 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
       return x
     })
     setContent[1]([...newArr])
-    console.log(arr)
-    console.log(setContent[0])
     setOpen(false)
+    saveAgenda({ test: newArr })
   }
 
   const handleChange = (e) => {
