@@ -1,24 +1,16 @@
-import { useState } from 'react'
 import { saveAgenda } from '../firebase'
 
-export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
-  const [step, setStep] = useState(300)
+export const ModalAgenda = ({ open, setOpen, setContent, indexDay, day }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('submit')
     if (e.target[0].value === '0') return false
-    // if (e.target[0].value > e.target[1].value) {
-    //   console.log('start tiene q ser menor a end')
-    //   return false
-    // }
-    // const dateStart = e.target[1].value
-    // const dateEnd = e.target[2].value
     const dateStart = '08:00'
     const dateEnd = '20:00'
 
     const getDate = (value) => {
       const horaMinutos = value.split(':')
-      const fechaActual = new Date()
+      const fechaActual = new Date(day.setHours(0, 0, 0, 0))
       fechaActual.setHours(horaMinutos[0])
       fechaActual.setMinutes(horaMinutos[1] - 4)
       return fechaActual
@@ -28,9 +20,11 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
     const end = getDate(dateEnd)
     const arr = []
     const blocks = 1440 / e.target[0].value
+    console.log('day', new Date(day.setHours(0, 0, 0, 0)))
     new Array(blocks).fill('').forEach((x, i) => {
-      const hoy = new Date(new Date().setHours(0, 0, 0, 0))
+      const hoy = new Date(day.setHours(0, 0, 0, 0))
       const newDate = new Date(hoy.setMinutes(hoy.getMinutes() + (i * e.target[0].value)))
+      console.log(newDate)
       const hour = newDate.getHours().toString().padStart(2, '0')
       const minutes = newDate.getMinutes().toString().padStart(2, '0')
       // return `${hour}:${newDate.getMinutes()}`
@@ -42,14 +36,13 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
       }
       return x
     })
+    console.log(newArr)
     setContent[1]([...newArr])
     setOpen(false)
     saveAgenda({ test: newArr })
   }
 
   const handleChange = (e) => {
-    const blocks = 1440 / e.target.value
-    setStep(blocks)
   }
 
   const cerrar = (e) => {
@@ -60,7 +53,7 @@ export const ModalAgenda = ({ open, setOpen, setContent, indexDay }) => {
   return (
     <div onClick={cerrar} className={`fonde fixed top-0 left-0 z-50 w-full flex items-start justify-center bg-black bg-opacity-40 min-h-screen ${!open && 'hidden'}`}>
       <div onClick={() => console.log('modal')} className='relative z-[1050] bg-white max-w-sm w-full m-5 p-5'>
-        <h1 className='text-center mb-2'>Day</h1>
+        <h1 className='text-center mb-2'>Day {}</h1>
         <hr />
         <form onSubmit={handleSubmit} className='p-5'>
           <div className='mb-2 flex justify-between'>

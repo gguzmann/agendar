@@ -1,21 +1,23 @@
+import { saveAgenda } from '../firebase'
 import { weekday } from '../utils/agenda'
 import { OpenAgenda } from './OpenAgenda'
 
 export const Day = ({ dia, agenda, indexDay, setContent }) => {
-  const handleClick = (ind) => {
-    console.log(agenda[dia.getDay()].horario[ind])
+  const handleClick = (ind, color) => {
     const newArr = setContent[0][dia.getDay()].horario.map((x, i) => {
       if (i === ind) {
         return { ...x, active: 0 }
       }
       return x
     })
-    setContent[1](setContent[0].map((a, b) => {
+    const newContent = setContent[0].map((a, b) => {
       if (a.dayNum === dia.getDay()) {
         return { ...a, horario: newArr }
       }
       return a
-    }))
+    })
+    setContent[1](newContent)
+    // saveAgenda({ test: newContent })
   }
 
   const handleRightClick = (ind) => {
@@ -27,12 +29,14 @@ export const Day = ({ dia, agenda, indexDay, setContent }) => {
       }
       return x
     })
-    setContent[1](setContent[0].map((a, b) => {
+    const newContent = setContent[0].map((a, b) => {
       if (a.dayNum === dia.getDay()) {
         return { ...a, horario: newArr }
       }
       return a
-    }))
+    })
+    setContent[1](newContent)
+    // saveAgenda({ test: newContent })
   }
 
   return (
@@ -55,7 +59,7 @@ export const Day = ({ dia, agenda, indexDay, setContent }) => {
             </div>
           </div>
         ))
-        : <OpenAgenda setContent={setContent} indexDay={dia.getDay()} />}
+        : <OpenAgenda setContent={setContent} indexDay={dia.getDay()} day={dia} />}
     </div>
   )
 }
